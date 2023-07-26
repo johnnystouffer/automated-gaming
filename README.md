@@ -1,2 +1,2 @@
-# open-world-experiment
+# Automated Gaming
 
