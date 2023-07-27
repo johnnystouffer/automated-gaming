@@ -1,3 +1,11 @@
+"""
+
+Snake Game AI using Deep Q-Learning.
+ALMOST ALL CODE FOR GAME.PY IS FROM
+Patrick Loeber's Snake Game Tutorial
+
+"""
+
 import pygame
 import random
 from enum import Enum
@@ -5,7 +13,7 @@ from collections import namedtuple
 import numpy as np
 
 pygame.init()
-font = pygame.font.Font('comic.ttf', 25)
+font = pygame.font.Font('SF-Pro.ttf', 25)
 
 background_image = pygame.image.load("background.jpg")
 background_image = pygame.transform.scale(background_image, (1280, 960))
