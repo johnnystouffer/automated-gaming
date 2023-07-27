@@ -7,6 +7,7 @@ pygame.init()
 font = pygame.font.Font('comic.ttf', 25)
 
 background_image = pygame.image.load("background.jpg")
+background_image = pygame.transform.scale(background_image, (1280, 960))
 the_apple = pygame.image.load("food.jpg")
 
 class Direction(Enum):
@@ -20,16 +21,16 @@ Point = namedtuple('Point', 'x, y')
 # rgb colors
 WHITE = (255, 255, 255)
 RED = (200,0,0)
-BLUE1 = (0, 0, 255)
-BLUE2 = (0, 100, 255)
+GREEN1 = (150, 255, 150)
+GREEN2 = (220, 255, 220)
 BLACK = (0,0,0)
 
-BLOCK_SIZE = 20
-SPEED = 20
+BLOCK_SIZE = 40
+SPEED = 15
 
 class SnakeGame:
     
-    def __init__(self, w=640, h=480):
+    def __init__(self, w=1280, h=960):
         self.w = w
         self.h = h
         # init display
@@ -47,6 +48,7 @@ class SnakeGame:
         
         self.score = 0
         self.food = None
+        self.apple = pygame.transform.scale(the_apple, (BLOCK_SIZE+4, BLOCK_SIZE+4))
         self._place_food()
         
     def _place_food(self):
@@ -106,13 +108,13 @@ class SnakeGame:
         return False
         
     def _update_ui(self):
-        self.display.fill(BLACK)
+        self.display.blit(background_image, (0, 0))
         
         for pt in self.snake:
-            pygame.draw.rect(self.display, BLUE1, pygame.Rect(pt.x, pt.y, BLOCK_SIZE, BLOCK_SIZE))
-            pygame.draw.rect(self.display, BLUE2, pygame.Rect(pt.x+4, pt.y+4, 12, 12))
+            pygame.draw.rect(self.display, GREEN1, pygame.Rect(pt.x, pt.y, BLOCK_SIZE, BLOCK_SIZE))
+            pygame.draw.rect(self.display, GREEN2, pygame.Rect(pt.x+4, pt.y+4, 12, 12))
             
-        pygame.draw.rect(self.display, RED, pygame.Rect(self.food.x, self.food.y, BLOCK_SIZE, BLOCK_SIZE))
+        self.display.blit(self.apple, (self.food.x, self.food.y))
         
         text = font.render("Score: " + str(self.score), True, WHITE)
         self.display.blit(text, [0, 0])
