@@ -1,6 +1,6 @@
 # Automated Gaming
 
-# TO VIEW IN ACTION, CLICK HERE
+# TO VIEW IN ACTION, [CLICK HERE](https://www.youtube.com/watch?v=1uWco5-xO24&ab_channel=JohnnyStouffer)
 
 ## Results
 
